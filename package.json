@@ -1,5 +1,5 @@
 {
-  "name": "ReduxDemo",
+  "name": "redux_demo",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,9 +7,11 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "babel source/ -d lib/"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-gesture-handler": "^1.5.2",
@@ -23,13 +25,16 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
+    "@babel/preset-flow": "^7.7.4",
     "@babel/runtime": "^7.7.6",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
     "eslint": "^6.7.2",
+    "flow-bin": "^0.113.0",
     "jest": "^24.9.0",
-    "metro-react-native-babel-preset": "^0.57.0",
+    "metro-react-native-babel-preset": "^0.56.3",
     "react-test-renderer": "16.9.0"
   },
   "jest": {

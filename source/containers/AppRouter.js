@@ -3,7 +3,7 @@ import AppContainer from './AppContainer';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as appActions from '../actions/AppActions';
-class AppRouter extends Component<> {
+class AppRouter extends Component {
   // componentDidMount() {
   //     this.removeNotificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen: NotificationOpen) => {
   //         // Get the action triggered by the notification being opened
