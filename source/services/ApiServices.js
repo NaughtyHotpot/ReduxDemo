@@ -1,16 +1,20 @@
 import NetworkUtil from './NetworkUtil';
+import {registerValidate} from './Validation';
 
 export let registerApi;
 
-registerApi = (data, callbackSuccess, callbackFail) => {
-  NetworkUtil()
-    .post('/register', data)
-    .then(response => {
-        console.log('success', response);
-      callbackSuccess();
+registerApi = (text, dispatch, callbackSuccess, callbackFail) => {
+  NetworkUtil('/register', text, dispatch, registerValidate(text))
+    .then(data => {
+      console.log('success', data);
+      if (callbackSuccess) {
+        callbackSuccess(data);
+      }
     })
     .catch(error => {
-      // callbackFail();
+      if (callbackFail) {
+        callbackFail();
+      }
       console.log('error', error);
     });
 };

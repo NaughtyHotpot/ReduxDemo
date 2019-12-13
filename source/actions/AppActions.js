@@ -1,27 +1,16 @@
-// @flow
-import * as types from './ActionTypes';
 import {registerApi} from '../services/ApiServices';
-import {SET_USER_ID} from './ActionTypes';
-import NetworkUtil from '../services/NetworkUtil';
+import {SET_MOBILE} from './ActionTypes';
 
 export let registerMobile;
-registerMobile = (text, callbackSuccess, callbackFail, callbackUpdate) => {
+registerMobile = text => {
   console.log('willDoApiAction', '');
   return (dispatch, getState) => {
     console.log('apiAction', getState());
-    NetworkUtil()
-      .post('/register', text)
-      .then(response => {
-        console.log('success', response);
-        dispatch({
-          type: SET_USER_ID,
-          data: response.data.name,
-        });
-        // callbackSuccess();
-      })
-      .catch(error => {
-        // callbackFail();
-        console.log('error', error);
+    registerApi(text, dispatch, data => {
+      dispatch({
+        type: SET_MOBILE,
+        data: data.name,
       });
+    });
   };
 };

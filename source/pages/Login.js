@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {Button, Text, TextInput, View, StyleSheet} from 'react-native';
-import {MyButton} from '../../components/Button';
-
-export default class HomeView extends Component<> {
+import {Text, TextInput, View, StyleSheet} from 'react-native';
+import {MyButton} from '../components/Button';
+export default class Login extends Component<> {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,10 +22,7 @@ export default class HomeView extends Component<> {
     return (
       <View style={styles.container}>
         <View style={styles.content}>
-          <Text style={styles.title}>SnapSAFE</Text>
-          <Text style={styles.boldText}>
-            Spot any WSH issues?{this.props.screenProps.state.user.mobile}
-          </Text>
+          <Text style={styles.title}>LoginPage</Text>
           <Text style={styles.normalText}>
             Enter your phone number to get started:
           </Text>
@@ -84,7 +80,7 @@ const styles = StyleSheet.create({
   textBox: {
     fontSize: 16,
     height: 50,
-    width: 300,
+    width: '80%',
     borderColor: '#E9ECEE',
 
     borderWidth: 1,
