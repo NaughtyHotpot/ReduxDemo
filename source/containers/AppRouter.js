@@ -11,6 +11,7 @@ import {
   SafeAreaView,
   Platform,
 } from 'react-native';
+import NavigationService from '../services/NavigationService';
 class AppRouter extends Component {
   // componentDidMount() {
   //     this.removeNotificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen: NotificationOpen) => {
@@ -80,7 +81,12 @@ class AppRouter extends Component {
             </View>
           </SafeAreaView>
         </Modal>
-        <AppContainer screenProps={this.props} />
+        <AppContainer
+          ref={navigatorRef => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }}
+          screenProps={this.props}
+        />
       </View>
     );
   }

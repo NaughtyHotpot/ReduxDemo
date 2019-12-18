@@ -34,7 +34,7 @@ function validate({getState}) {
 }
 let middleware = [thunk];
 if (__DEV__) {
-  middleware = [logger, thunk];
+  middleware = [logger, validate, thunk];
 }
 
 const store = createStore(Reducer, applyMiddleware(...middleware));

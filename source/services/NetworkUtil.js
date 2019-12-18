@@ -3,6 +3,7 @@ import {BASE_URL} from '../config/ServiceConfig';
 import {MyAlert} from '../utils/AlertUtil';
 import {VALIDATED} from '../config/Constant';
 import {PROGRESSING} from '../actions/ActionTypes';
+import NavigationService from './NavigationService';
 
 // instance.interceptors.response.use(
 //   response => {
@@ -53,7 +54,9 @@ const NetworkUtil = async (api, params, dispatch, validation) => {
           type: PROGRESSING,
           data: false,
         });
-        MyAlert(response.data.name);
+        MyAlert(response.data.name,()=>{
+            NavigationService.navigate('Landing');
+        });
         resolve(response.data);
       })
       .catch(error => {

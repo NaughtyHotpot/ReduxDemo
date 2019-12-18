@@ -1,5 +1,6 @@
 import {registerApi} from '../services/ApiServices';
 import {SET_MOBILE} from './ActionTypes';
+import NavigationService from '../services/NavigationService';
 
 export let registerMobile;
 registerMobile = text => {
