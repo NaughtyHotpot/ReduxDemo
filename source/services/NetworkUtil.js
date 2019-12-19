@@ -44,7 +44,9 @@ const NetworkUtil = async (api, params, dispatch, validation) => {
         return Promise.reject({message: validation});
       }
     },
-    error => {},
+    error => {
+      return Promise.reject(error);
+    },
   );
   return new Promise((resolve, reject) => {
     instance
@@ -53,9 +55,6 @@ const NetworkUtil = async (api, params, dispatch, validation) => {
         dispatch({
           type: PROGRESSING,
           data: false,
-        });
-        MyAlert(response.data.name,()=>{
-            NavigationService.navigate('Landing');
         });
         resolve(response.data);
       })

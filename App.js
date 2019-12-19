@@ -4,6 +4,8 @@ import {createStore, applyMiddleware} from 'redux';
 import Reducer from './source/reducers/Reducer';
 import thunk from 'redux-thunk';
 import AppRouter from './source/containers/AppRouter';
+import codePush from 'react-native-code-push';
+import {MyAlert} from './source/utils/AlertUtil';
 function logger({getState}) {
   return next => action => {
     console.log('will dispatch', action);
@@ -33,12 +35,27 @@ function validate({getState}) {
   };
 }
 let middleware = [thunk];
-if (__DEV__) {
-  middleware = [logger, validate, thunk];
-}
+// if (__DEV__) {
+//   middleware = [logger, validate, thunk];
+// }
 
 const store = createStore(Reducer, applyMiddleware(...middleware));
-export default class App extends Component<> {
+class App extends Component<> {
+  componentDidMount(): void {
+    codePush
+      .checkForUpdate()
+      .then(update => {
+        if (update) {
+          MyAlert('An update is available! Should we download it?');
+        } else {
+          MyAlert('The app is up to date!');
+        }
+      })
+      .catch(error => {
+        MyAlert(error.message);
+      });
+  }
+
   render() {
     return (
       <Provider store={store}>
@@ -47,3 +64,5 @@ export default class App extends Component<> {
     );
   }
 }
+
+export default codePush(App);

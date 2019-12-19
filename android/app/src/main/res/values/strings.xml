@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ReduxDemo</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">kuIQhsdv63VIyDm4ar_sFe4t5DczTX4QXPag3</string>
+<!--    pro-->
+<!--    <string moduleConfig="true" name="CodePushDeploymentKey">Dhdn3xIOfhURLiZEA1mi9x19NlLLZD3yH4xRpQ</string>-->
 </resources>

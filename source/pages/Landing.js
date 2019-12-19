@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, TextInput, View, StyleSheet} from 'react-native';
+import {Text, Image, View, StyleSheet} from 'react-native';
 import {MyButton} from '../components/Button';
 export default class Landing extends Component<> {
   constructor(props) {
@@ -16,28 +16,20 @@ export default class Landing extends Component<> {
     this.setState({value: text, mobile: text});
   };
   doRegister = () => {
-    this.props.screenProps.actions.registerMobile(this.state.mobile);
+    this.props.navigation.navigate('Home');
   };
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.content}>
           <Text style={styles.title}>Landing</Text>
-          <Text style={styles.normalText}>
-            Enter your phone number to get started:
-          </Text>
+          <Text style={styles.normalText}>Hello!</Text>
           <View style={styles.centerBlock}>
-            <TextInput
-              style={styles.textBox}
-              onChangeText={this.handleOnChange}
-              placeholder="Enter Mobile Number"
-              placeholderTextColor="#B1B8C7"
-              textContentType="telephoneNumber"
-              defaultValue={this.state.mobile}
-              keyboardType="phone-pad"
-              maxLength={8}
-              underlineColorAndroid="transparent"
+            <Image
+              style={{width: 20, height: 20}}
+              source={{uri: this.props.navigation.state.params.data.avatar}}
             />
+            <Text>{this.props.navigation.state.params.data.name}</Text>
           </View>
           <MyButton title="Continue" onPress={this.doRegister} />
         </View>
